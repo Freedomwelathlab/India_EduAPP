@@ -40,7 +40,7 @@ export const SEED_QUESTIONS: Question[] = [
     cognitive: 'remember_understand', difficultyTier: 2, marks: 1, negativeMarks: 0, expectedSeconds: 40, competencyCodes: [], provenance: prov,
   },
   {
-    id: 'q-g7m-001', versionId: V, grade: 7, subject: 'MATH', topicId: 'g7m-c8-t1', type: 'numeric', level: 'standard',
+    id: 'q-g7m-001', versionId: V, grade: 7, subject: 'MATH', topicId: 'g7m-p2c2-t1', type: 'numeric', level: 'standard',
     stem: 'Evaluate:  (−8) × (−5) + (−12)',
     numeric: { value: 28, tolerance: 0 },
     explanation: '(−8) × (−5) = +40, because a negative times a negative is positive. Then 40 + (−12) = 28.',
@@ -62,7 +62,7 @@ export const SEED_QUESTIONS: Question[] = [
     cognitive: 'apply', difficultyTier: 3, marks: 1, negativeMarks: 0, expectedSeconds: 45, competencyCodes: [], provenance: prov,
   },
   {
-    id: 'q-g8m-001', versionId: V, grade: 8, subject: 'MATH', topicId: 'g8m-c1-t1', type: 'numeric', level: 'standard',
+    id: 'q-g8m-001', versionId: V, grade: 8, subject: 'MATH', topicId: 'g8m-p1c1-t1', type: 'numeric', level: 'standard',
     stem: 'What is the smallest whole number by which 72 must be multiplied to make it a perfect square?',
     numeric: { value: 2, tolerance: 0 },
     explanation: '72 = 2 × 2 × 2 × 3 × 3. The 3s pair up, but one 2 is left over. Multiplying by 2 gives 144 = 12².',
@@ -84,7 +84,7 @@ export const SEED_QUESTIONS: Question[] = [
     cognitive: 'remember_understand', difficultyTier: 2, marks: 1, negativeMarks: 0, expectedSeconds: 40, competencyCodes: [], provenance: prov,
   },
   {
-    id: 'q-g9m-001', versionId: V, grade: 9, subject: 'MATH', topicId: 'g9m-u2-c1-t1', type: 'mcq', level: 'standard',
+    id: 'q-g9m-001', versionId: V, grade: 9, subject: 'MATH', topicId: 'g9m-c2-t1', type: 'mcq', level: 'standard',
     stem: 'What is the zero of the polynomial p(x) = 3x − 6?',
     options: [
       { id: 'a', text: '−2', misconception: 'Sign error: 3x − 6 = 0 gives 3x = +6, not −6.' },
@@ -98,7 +98,7 @@ export const SEED_QUESTIONS: Question[] = [
     cognitive: 'remember_understand', difficultyTier: 3, marks: 1, negativeMarks: 0, expectedSeconds: 45, competencyCodes: ['CG-3', 'C-3.2'], provenance: prov,
   },
   {
-    id: 'q-g9s-001', versionId: V, grade: 9, subject: 'SCI', topicId: 'g9s-u3-c1-t1', type: 'numeric', level: 'standard',
+    id: 'q-g9s-001', versionId: V, grade: 9, subject: 'SCI', topicId: 'g9s-c4-t1', type: 'numeric', level: 'standard',
     stem: 'A car speeds up uniformly from 10 m/s to 30 m/s in 5 seconds. What is its acceleration (in m/s²)?',
     numeric: { value: 4, tolerance: 0.01, unit: 'm/s²' },
     explanation: 'a = (v − u) / t = (30 − 10) / 5 = 4 m/s².',
@@ -106,7 +106,7 @@ export const SEED_QUESTIONS: Question[] = [
     cognitive: 'apply', difficultyTier: 4, marks: 2, negativeMarks: 0, expectedSeconds: 90, competencyCodes: [], provenance: prov,
   },
   {
-    id: 'q-g10m-001', versionId: V, grade: 10, subject: 'MATH', topicId: 'g10m-u2-c3-t1', type: 'assertion_reason', level: 'standard',
+    id: 'q-g10m-001', versionId: V, grade: 10, subject: 'MATH', topicId: 'g10m-c4-t1', type: 'assertion_reason', level: 'standard',
     context: 'Assertion (A): The quadratic equation 2x² − 4x + 3 = 0 has no real roots.\nReason (R): If the discriminant b² − 4ac of a quadratic equation is negative, the equation has no real roots.',
     stem: 'Choose the correct option.',
     options: [
@@ -121,7 +121,7 @@ export const SEED_QUESTIONS: Question[] = [
     cognitive: 'analyse_evaluate_create', difficultyTier: 5, marks: 1, negativeMarks: 0, expectedSeconds: 75, competencyCodes: [], provenance: prov,
   },
   {
-    id: 'q-g10s-001', versionId: V, grade: 10, subject: 'SCI', topicId: 'g10s-u4-c1-t1', type: 'case_based', level: 'standard',
+    id: 'q-g10s-001', versionId: V, grade: 10, subject: 'SCI', topicId: 'g10s-c11-t1', type: 'case_based', level: 'standard',
     context: 'Aarav is building a night lamp for a science fair. He connects three identical 6 Ω resistors in parallel across a 6 V battery. He wants to know how much current the battery supplies before choosing a switch rated for a maximum of 5 A.',
     stem: 'What is the total current drawn from the battery?',
     options: [

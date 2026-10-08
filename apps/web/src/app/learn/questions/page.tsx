@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { SEED_QUESTIONS, toStudentView } from '@ieos/assessment';
-import { findTopic } from '@ieos/curriculum';
+import { chapterLabel, findTopic } from '@ieos/curriculum';
 import { QuestionCard } from '@/components/QuestionCard';
 import { PageHead } from '@/components/ui';
 
@@ -18,7 +18,7 @@ export default function Gallery() {
           return (
             <div key={q.id}>
               <p className="small muted" style={{ margin: '0 0 6px 4px' }}>
-                Class {q.grade} · {t.subject.name} · Ch {t.chapter.number} {t.chapter.title} › <Link href={`/learn/topic/${q.topicId}`}>{t.topic.title}</Link>
+                Class {q.grade} · {t.subject.name} · {chapterLabel(t.chapter)} {t.chapter.title} › <Link href={`/learn/topic/${q.topicId}`}>{t.topic.title}</Link>
               </p>
               <QuestionCard q={toStudentView(q)} />
             </div>

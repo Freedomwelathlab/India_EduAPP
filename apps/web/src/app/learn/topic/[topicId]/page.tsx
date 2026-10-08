@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { findTopic } from '@ieos/curriculum';
+import { chapterLabel, findTopic } from '@ieos/curriculum';
 import { questionsForTopic, toStudentView } from '@ieos/assessment';
 import { QuestionCard } from '@/components/QuestionCard';
 import { DoubtForm, Tabs, VideoPlayer } from '@/components/TopicTabs';
@@ -9,9 +9,9 @@ import { DOUBTS, SESSIONS, VIDEOS, fmtDate, fmtDur } from '@/lib/demo';
 
 /** One headline line for the video "board" per seeded topic. */
 const BOARD_EQ: Record<string, string> = {
-  'g6m-c5-t1': '61 = 1 × 61', 'g6s-c4-t1': 'N ⇅ S', 'g7m-c8-t1': '(−) × (−) = (+)', 'g7s-c2-t1': 'Turmeric + base → red',
-  'g8m-c1-t1': '72 = 2³ × 3²', 'g8s-c5-t1': 'Friction opposes motion', 'g9m-u2-c1-t1': 'p(x) = 0 ⇒ x = ?',
-  'g9s-u3-c1-t1': 'a = (v − u) / t', 'g10m-u2-c3-t1': 'D = b² − 4ac', 'g10s-u4-c1-t1': '1/R = 1/R₁ + 1/R₂ + 1/R₃',
+  'g6m-c5-t1': '61 = 1 × 61', 'g6s-c4-t1': 'N ⇅ S', 'g7m-p2c2-t1': '(−) × (−) = (+)', 'g7s-c2-t1': 'Turmeric + base → red',
+  'g8m-p1c1-t1': '72 = 2³ × 3²', 'g8s-c5-t1': 'Friction opposes motion', 'g9m-c2-t1': 'p(x) = 0 ⇒ x = ?',
+  'g9s-c4-t1': 'a = (v − u) / t', 'g10m-c4-t1': 'D = b² − 4ac', 'g10s-c11-t1': '1/R = 1/R₁ + 1/R₂ + 1/R₃',
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ topicId: string }> }) {
@@ -36,10 +36,10 @@ export default async function TopicPage({ params }: { params: Promise<{ topicId:
         crumbs={[
           ['Subjects', '/learn/subjects'],
           [`Class ${subject.grade} ${subject.name}`, `/learn/${subject.grade}/${slug}`],
-          [`Ch ${chapter.number}: ${chapter.title}`, `/learn/${subject.grade}/${slug}/${chapter.id}`],
+          [`${chapterLabel(chapter)}: ${chapter.title}`, `/learn/${subject.grade}/${slug}/${chapter.id}`],
         ]}
         title={topic.title}
-        sub={<>{topic.learningOutcomes[0] ?? 'Topic'} {topic.levels.includes('advanced') && <span className="chip info">Advanced track available</span>}</>}
+        sub={<>{topic.learningOutcomes[0] ?? 'Topic'} {topic.levels.includes('advanced') && <span className="chip info">Advanced track available</span>}{topic.assessmentScope === 'formative_only' && <span className="chip warn">Taught and assessed in class, not in the Board exam</span>}</>}
       />
       <Tabs tabs={[
         {

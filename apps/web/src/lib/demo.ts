@@ -56,19 +56,19 @@ export const VIDEOS: Video[] = SEED_QUESTIONS.map((q) => {
 export interface Doubt { id: string; studentName: string; section: string; topicId: string; body: string; status: 'open' | 'answered' | 'faq'; ageHours: number; answer?: string; votes: number }
 
 export const DOUBTS: Doubt[] = [
-  { id: 'd1', studentName: 'Kabir Singh', section: '9A', topicId: 'g9m-u2-c1-t1', body: 'Why is the zero of 3x − 6 positive 2 when there is a minus sign in the polynomial?', status: 'open', ageHours: 3, votes: 5 },
-  { id: 'd2', studentName: 'Vihaan Gupta', section: '9A', topicId: 'g9m-u2-c1-t1', body: 'Can a linear polynomial have two zeros?', status: 'open', ageHours: 20, votes: 3 },
-  { id: 'd3', studentName: 'Meera Nair', section: '9B', topicId: 'g9m-u2-c1-t1', body: 'Is the zero the same as the y-intercept?', status: 'answered', ageHours: 30, votes: 2, answer: 'No. The zero is where the graph crosses the x-axis (p(x) = 0). The y-intercept is p(0). For 3x − 6, the zero is 2 and the y-intercept is −6.' },
-  { id: 'd4', studentName: 'Aanya Sharma', section: '9A', topicId: 'g9s-u3-c1-t1', body: 'If a car slows down, is its acceleration negative?', status: 'faq', ageHours: 50, votes: 9, answer: 'Yes, if you take the direction of motion as positive. Slowing down means the velocity is decreasing, so a = (v − u)/t comes out negative. This is called retardation or deceleration.' },
-  { id: 'd5', studentName: 'Arjun Mehta', section: '9A', topicId: 'g9s-u3-c1-t1', body: 'Why is acceleration measured in m/s² and not m/s?', status: 'open', ageHours: 26, votes: 4 },
+  { id: 'd1', studentName: 'Kabir Singh', section: '9A', topicId: 'g9m-c2-t1', body: 'Why is the zero of 3x − 6 positive 2 when there is a minus sign in the polynomial?', status: 'open', ageHours: 3, votes: 5 },
+  { id: 'd2', studentName: 'Vihaan Gupta', section: '9A', topicId: 'g9m-c2-t1', body: 'Can a linear polynomial have two zeros?', status: 'open', ageHours: 20, votes: 3 },
+  { id: 'd3', studentName: 'Meera Nair', section: '9B', topicId: 'g9m-c2-t1', body: 'Is the zero the same as the y-intercept?', status: 'answered', ageHours: 30, votes: 2, answer: 'No. The zero is where the graph crosses the x-axis (p(x) = 0). The y-intercept is p(0). For 3x − 6, the zero is 2 and the y-intercept is −6.' },
+  { id: 'd4', studentName: 'Aanya Sharma', section: '9A', topicId: 'g9s-c4-t1', body: 'If a car slows down, is its acceleration negative?', status: 'faq', ageHours: 50, votes: 9, answer: 'Yes, if you take the direction of motion as positive. Slowing down means the velocity is decreasing, so a = (v − u)/t comes out negative. This is called retardation or deceleration.' },
+  { id: 'd5', studentName: 'Arjun Mehta', section: '9A', topicId: 'g9s-c4-t1', body: 'Why is acceleration measured in m/s² and not m/s?', status: 'open', ageHours: 26, votes: 4 },
 ];
 
 export interface Session { id: string; type: 'topic_clinic' | 'pre_test_revision' | 'remedial_group'; title: string; grade: Grade; subject: SubjectCode; topicIds: string[]; teacher: string; startsAt: string; durationMin: number; capacity: number; enrolled: number; sections: string[]; status: 'scheduled' | 'completed'; recording?: boolean }
 
 export const SESSIONS: Session[] = [
-  { id: 'ss1', type: 'pre_test_revision', title: 'PT-2 revision: Polynomials', grade: 9, subject: 'MATH', topicIds: ['g9m-u2-c1-t1'], teacher: 'Mrs. Lakshmi Rao', startsAt: '2026-10-09T16:00:00+05:30', durationMin: 45, capacity: 40, enrolled: 27, sections: ['9A', '9B'], status: 'scheduled' },
-  { id: 'ss2', type: 'remedial_group', title: 'Small-group help: zeros of a polynomial', grade: 9, subject: 'MATH', topicIds: ['g9m-u2-c1-t1'], teacher: 'Mrs. Lakshmi Rao', startsAt: '2026-10-10T15:30:00+05:30', durationMin: 30, capacity: 8, enrolled: 3, sections: ['9A'], status: 'scheduled' },
-  { id: 'ss3', type: 'topic_clinic', title: 'Motion clinic: acceleration and v–t graphs', grade: 9, subject: 'SCI', topicIds: ['g9s-u3-c1-t1'], teacher: 'Mr. Anil Kulkarni', startsAt: '2026-10-13T16:00:00+05:30', durationMin: 45, capacity: 40, enrolled: 18, sections: ['9A', '9B', '9C'], status: 'scheduled' },
+  { id: 'ss1', type: 'pre_test_revision', title: 'PT-2 revision: Polynomials', grade: 9, subject: 'MATH', topicIds: ['g9m-c2-t1'], teacher: 'Mrs. Lakshmi Rao', startsAt: '2026-10-09T16:00:00+05:30', durationMin: 45, capacity: 40, enrolled: 27, sections: ['9A', '9B'], status: 'scheduled' },
+  { id: 'ss2', type: 'remedial_group', title: 'Small-group help: zeros of a polynomial', grade: 9, subject: 'MATH', topicIds: ['g9m-c2-t1'], teacher: 'Mrs. Lakshmi Rao', startsAt: '2026-10-10T15:30:00+05:30', durationMin: 30, capacity: 8, enrolled: 3, sections: ['9A'], status: 'scheduled' },
+  { id: 'ss3', type: 'topic_clinic', title: 'Motion clinic: acceleration and v–t graphs', grade: 9, subject: 'SCI', topicIds: ['g9s-c4-t1'], teacher: 'Mr. Anil Kulkarni', startsAt: '2026-10-13T16:00:00+05:30', durationMin: 45, capacity: 40, enrolled: 18, sections: ['9A', '9B', '9C'], status: 'scheduled' },
   { id: 'ss4', type: 'topic_clinic', title: 'Number System doubts', grade: 9, subject: 'MATH', topicIds: [], teacher: 'Mrs. Lakshmi Rao', startsAt: '2026-10-01T16:00:00+05:30', durationMin: 45, capacity: 40, enrolled: 31, sections: ['9A', '9B'], status: 'completed', recording: true },
 ];
 

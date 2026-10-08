@@ -54,8 +54,14 @@ export interface Topic {
 
 export interface Chapter {
   id: string;
+  /** Chapter number as printed in the NCERT book (restarts at 1 in Part 2 of two-part books). */
   number: number;
+  /** For two-part books (e.g. Ganita Prakash Class 7–8). */
+  part?: 1 | 2;
+  /** Title as printed in the NCERT book. */
   title: string;
+  /** The board syllabus's own name(s) for this content, when they differ from the book title. */
+  boardSyllabusNames?: string[];
   textbook: string;
   /** Periods recommended by the board, when published. Drives the pacing planner. */
   periods?: number;

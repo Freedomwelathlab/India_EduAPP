@@ -38,3 +38,52 @@ describe('CBSE 2026-27 curriculum', () => {
     for (const s of CBSE_2026_27_SUBJECTS) expect(s.sources.length).toBeGreaterThan(0);
   });
 });
+
+describe('NCERT book alignment (contents pages, 2026-27 reprints)', () => {
+  const EXPECTED: Record<string, number[]> = {
+    // subject id → chapters per part (single-part books have one entry)
+    'CBSE:2026-27:G6:MATH': [10], 'CBSE:2026-27:G6:SCI': [12],
+    'CBSE:2026-27:G7:MATH': [8, 7], 'CBSE:2026-27:G7:SCI': [12],
+    'CBSE:2026-27:G8:MATH': [7, 7], 'CBSE:2026-27:G8:SCI': [13],
+    'CBSE:2026-27:G9:MATH': [14], 'CBSE:2026-27:G9:SCI': [13],
+    'CBSE:2026-27:G10:MATH': [14], 'CBSE:2026-27:G10:SCI': [13],
+  };
+  it('every book chapter appears exactly once, numbered 1..N in each part', () => {
+    for (const s of CBSE_2026_27_SUBJECTS) {
+      const chs = s.units.flatMap((u) => u.chapters);
+      const parts = EXPECTED[s.id]!;
+      parts.forEach((n, i) => {
+        const part = parts.length > 1 ? i + 1 : undefined;
+        const nums = chs.filter((c) => c.part === part).map((c) => c.number).sort((a, b) => a - b);
+        expect(nums, `${s.id} part ${part ?? '-'}`).toEqual(Array.from({ length: n }, (_, k) => k + 1));
+      });
+    }
+  });
+
+  it('Class 9 Science units carry the CBSE marks for the right chapters', () => {
+    const s = getSubject(9, 'SCI')!;
+    const living = s.units.find((u) => u.title === 'World of Living')!;
+    expect(living.theoryMarks).toBe(27);
+    expect(living.chapters.map((c) => c.number).sort((a, b) => a - b)).toEqual([2, 3, 11, 12]);
+  });
+});
+
+describe('Class 10 topic map (C3)', () => {
+  it('every Class 10 chapter has at least one topic, and every mapped key is a real chapter', async () => {
+    const { G10_TOPICS } = await import('./topics-g10');
+    const ids = new Set<string>();
+    for (const g of [10] as const) for (const subj of ['MATH', 'SCI'] as const) {
+      for (const u of getSubject(g, subj)!.units) for (const c of u.chapters) {
+        ids.add(c.id);
+        expect(c.topics.length, c.id).toBeGreaterThan(0);
+      }
+    }
+    for (const k of Object.keys(G10_TOPICS)) expect(ids.has(k), k).toBe(true);
+  });
+
+  it('board formative-only content is flagged so it never enters a Board mock', () => {
+    const sci = getSubject(10, 'SCI')!;
+    const formative = sci.units.flatMap((u) => u.chapters.flatMap((c) => c.topics)).filter((t) => t.assessmentScope === 'formative_only').map((t) => t.title);
+    expect(formative).toEqual(expect.arrayContaining(['Periodic classification of elements', 'Evolution', 'Motor, induction and generator']));
+  });
+});

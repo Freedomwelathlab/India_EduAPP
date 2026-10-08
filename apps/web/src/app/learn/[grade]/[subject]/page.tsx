@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { SLUG_SUBJECT, getSubject, theoryMarksTotal, type Grade } from '@ieos/curriculum';
+import { SLUG_SUBJECT, chapterLabel, getSubject, theoryMarksTotal, type Grade } from '@ieos/curriculum';
 import { PageHead, SubjectIcon } from '@/components/ui';
 
 export default async function SubjectPage({ params }: { params: Promise<{ grade: string; subject: string }> }) {
@@ -34,11 +34,11 @@ export default async function SubjectPage({ params }: { params: Promise<{ grade:
                 <tbody>
                   {u.chapters.map((c) => (
                     <tr key={c.id}>
-                      <td>{c.number}</td>
-                      <td>{c.topics.length ? <Link href={`/learn/${grade}/${p.subject}/${c.id}`}><b>{c.title}</b></Link> : c.title}</td>
+                      <td style={{ whiteSpace: 'nowrap' }}>{chapterLabel(c)}</td>
+                      <td>{c.topics.length ? <Link href={`/learn/${grade}/${p.subject}/${c.id}`}><b>{c.title}</b></Link> : c.title}{c.boardSyllabusNames && <div className="small muted">CBSE syllabus: {c.boardSyllabusNames.join(" · ")}</div>}</td>
                       <td>{c.topics.length || '—'}</td>
                       <td className="num">{c.periods ?? '—'}</td>
-                      <td>{c.topics.length ? <span className="chip ok">Ready</span> : <span className="chip">Mapping</span>}{c.confidence !== 'high' && <span className="chip warn" style={{ marginLeft: 4 }} title="Chapter list not yet verified against NCERT">verify</span>}</td>
+                      <td>{c.topics.length ? <span className="chip ok">Ready</span> : <span className="chip">Mapping</span>}{c.confidence !== 'high' && <span className="chip warn" style={{ marginLeft: 4 }} title="Mapping of this book chapter to the CBSE unit still needs a teacher to confirm">confirm mapping</span>}</td>
                     </tr>
                   ))}
                 </tbody>

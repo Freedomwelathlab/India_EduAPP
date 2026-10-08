@@ -59,3 +59,8 @@ export function validatePrerequisites(subjects: SubjectCurriculum[]): string[] {
   for (const id of topics.keys()) visit(id, []);
   return errors;
 }
+
+/** "Ch 5" or "Part 2 · Ch 2", as a student finds it in the book. */
+export function chapterLabel(c: Chapter): string {
+  return c.part ? `Part ${c.part} · Ch ${c.number}` : `Ch ${c.number}`;
+}

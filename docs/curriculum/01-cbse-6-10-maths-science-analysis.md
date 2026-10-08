@@ -3,7 +3,7 @@
 **Version:** v1 · 2026-10-08 · Deliverable C (V1 wedge slice)
 **Primary sources (Tier 1):** CBSE *Secondary Curriculum Part 1, 2026-27* and the subject documents on cbseacademic.nic.in, read in full from the official PDFs:
 `Curriculum_SecP1_2026-27.pdf` (scheme of studies and assessment), `Maths_SecP1IX_2026-27.pdf`, `MathsAd_SecP1_2026-27.pdf`, `Maths_SecP1X_2026-27.pdf`, `ScienceSt_SecP1_2026-27.pdf`, `ScienceAd_SecP1_2026-27.pdf`, `Science_SecP1_2026-27.pdf` — base URL `https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/`.
-Classes 6–8 sources are Tier 5 (publisher and solution sites) and are flagged; verify against ncert.nic.in/textbook.php before content production.
+Classes 6–10 chapter lists were verified on 2026-10-08 against the NCERT 2026-27 reprint contents pages (ncert.nic.in/textbook/pdf/<code>ps.pdf).
 
 ---
 
@@ -30,12 +30,13 @@ Classes 6–8 sources are Tier 5 (publisher and solution sites) and are flagged;
 ### Class 9 Mathematics — new NCERT textbook *Ganita Manjari* (Parts 1 & 2)
 | Unit | Chapters | Marks /80 | Periods |
 |---|---|---|---|
-| I Number System | Number System (rationals, density, irrationals, √2 √3 proofs, square-root spiral) | 07 | 12 |
-| II Algebra | Introduction to Polynomials · Sequences and Progressions · Exploring Algebraic Identities · Linear Equations in Two Variables | 20 | 66 |
-| III Coordinate Geometry | Coordinate Geometry | 04 | — |
-| IV Geometry | Euclid's Geometry: Axioms and Postulates · Lines and Angles · Triangles: Congruence · 4-gons (Quadrilaterals) · Circles | 25 | — |
-| V Mensuration | Area and Perimeter · Surface Area and Volume | 14 | — |
-| VI Statistics & Probability | Statistics · Introduction to Probability | 10 | — |
+| I Number System | Number System → book Ch 3 *The World of Numbers* | 07 | 12 |
+| II Algebra | Introduction to Polynomials → Ch 2 · Exploring Algebraic Identities → Ch 4 · Sequences and Progressions → Ch 8 · Linear Equations in Two Variables → Ch 13 *Two Variables, One Line* | 20 | 66 |
+| III Coordinate Geometry | Coordinate Geometry → Ch 1 *Orienting Yourself: The Use of Coordinates* | 04 | — |
+| IV Geometry | Euclid's Geometry · Lines and Angles · Triangles: Congruence → Ch 9 *Propositions and their Converses* (mapping to confirm) · 4-gons → Ch 12 *Quadrilaterals* · Circles → Ch 5 | 25 | — |
+| V Mensuration | Area and Perimeter → Ch 6 · Surface Area and Volume → Ch 14 | 14 | — |
+| VI Statistics & Probability | Statistics → Ch 10 *How Quantities Combine: Understanding Data* (to confirm) · Probability → Ch 7 | 10 | — |
+| (not in unit table) | Ch 11 *The World of Algorithms* (computational thinking) | — | — |
 | **IA** | | **20** | |
 
 Note: the CBSE Class 9 syllabus now includes Sequences and Progressions (AP), which was previously a Class 10 topic. The curriculum graph needs a **many-to-many** concept link, *AP (C9 2026-27) ≈ AP (C10)*, without treating them as identical.
@@ -47,7 +48,7 @@ Note: the CBSE Class 9 syllabus now includes Sequences and Progressions (AP), wh
 | II Algebra | Polynomials · Pair of Linear Equations in Two Variables · Quadratic Equations · Arithmetic Progressions | 20 |
 | III Coordinate Geometry | Coordinate Geometry | 06 |
 | IV Geometry | Triangles · Circles | 15 |
-| V Trigonometry | Introduction to Trigonometry · Trigonometric Identities · Heights and Distances | 12 |
+| V Trigonometry | Ch 8 Introduction to Trigonometry (incl. identities) · Ch 9 Some Applications of Trigonometry (heights and distances) | 12 |
 | VI Mensuration | Areas Related to Circles · Surface Areas and Volumes | 10 |
 | VII Statistics & Probability | Statistics · Probability | 11 |
 
@@ -56,12 +57,13 @@ Note: the CBSE Class 9 syllabus now includes Sequences and Progressions (AP), wh
 ### Class 9 Science — new NCERT textbook *Exploration* (13 chapters)
 | Unit | Marks /80 |
 |---|---|
-| I Matter — Its Nature and Behaviour (Exploring Mixtures and their Separation · Structure of an Atom · Atoms and Molecules · …) | 27 |
-| II World of Living (Cell · Tissues · Reproduction · Diversity) | 25 |
-| III Motion, Force, Work and Sound (Motion · Force and Laws of Motion · Work, Energy and Simple Machines · Sound) | 23 |
-| IV Earth as a System (Earth as a System: Energy, Matter & Life) | 05 |
+| I World of Living (Ch 2 Cell · Ch 3 Tissues in Action · Ch 11 Reproduction · Ch 12 Patterns in Life: Diversity and Classification) | **27** |
+| II Matter — Its Nature and Behaviour (Ch 5 Exploring Mixtures · Ch 8 Journey Inside the Atom · Ch 9 Atomic Foundations of Matter) | **25** |
+| III Motion, Force, Work and Sound (Ch 4 Describing Motion · Ch 6 How Forces Affect Motion · Ch 7 Work, Energy, and Simple Machines · Ch 10 Sound Waves) | 23 |
+| IV Earth as a System (Ch 13) | 05 |
+| (not in unit table) Ch 1 *Exploration: Entering the World of Secondary Science* | — |
 | **IA** (Periodic 5 · Multiple 5 · Portfolio 5 · Practical 5) | **20** |
-Chapter-to-unit mapping is from layout-extracted tables. Confidence: medium. Re-verify against the PDF before content production.
+**Corrected 2026-10-08:** v1 of this doc swapped the marks of Matter and World of Living. The CBSE course-structure table (re-read with a text extractor) gives World of Living 27 and Matter 25, with the book chapter numbers shown above.
 
 ### Class 10 Science (086) — NCERT *Science X*
 | Unit | Chapters | Marks /80 |
@@ -78,9 +80,9 @@ Science lists **practicals mapped to units** (e.g. focal length of a concave mir
 
 | Class | Maths (*Ganita Prakash*) | Science (*Curiosity*) | Confidence |
 |---|---|---|---|
-| 6 | 10 chapters: Patterns in Mathematics · Lines and Angles · Number Play · Data Handling and Presentation · Prime Time · Perimeter and Area · Fractions · Playing with Constructions · Symmetry · The Other Side of Zero | 12 chapters: The Wonderful World of Science · Diversity in the Living World · Mindful Eating · Exploring Magnets · Measurement of Length and Motion · Materials Around Us · Temperature and its Measurement · A Journey through States of Water · Methods of Separation · Living Creatures · Nature's Treasures · Beyond Earth | Medium (Tier 5) |
-| 7 | Part 1: Large Numbers Around Us · Arithmetic Expressions · A Peek Beyond the Point · Expressions using Letter-Numbers · Parallel and Intersecting Lines · Number Play · … Part 2: Geometric Twins · Operations with Integers · Finding Common Ground · Another Peek Beyond the Point · Connecting the Dots… · Constructions and Tilings · … **(list incomplete)** | 13 chapters: The Ever-Evolving World of Science · Exploring Substances: Acidic, Basic and Neutral · Electricity: Circuits · Metals and Non-metals · Changes around Us · Adolescence · Heat Transfer in Nature · Measurement of Time and Motion · Life Processes in Animals · Life Processes in Plants · Light: Shadows and Reflections · Earth, Moon, and the Sun · Natural Resources | Medium; Maths list incomplete |
-| 8 | Part 1: A Square and a Cube · Power Play · A Story of Numbers · Quadrilaterals · Number Play · We Distribute Yet Things Multiply · Proportional Reasoning-1. Part 2: Fractions in Disguise · The Baudhayana-Pythagoras Theorem · Proportional Reasoning-2 · Exploring Some Geometric Themes · Tales by Dots and Lines · Algebra Play · Area | 13 chapters: Exploring the Investigative World of Science · The Invisible Living World · Health · Electricity: Magnetic and Heating Effects · Exploring Forces · Pressure, Winds, Storms, and Cyclones · Particulate Nature of Matter · Elements, Compounds, and Mixtures · Solutes, Solvents, and Solutions · Light: Mirrors and Lenses · Keeping Time with the Skies · How Nature Works in Harmony · Our Home: Earth | Medium (Tier 5) |
+| 6 | 10 chapters: Patterns in Mathematics · Lines and Angles · Number Play · Data Handling and Presentation · Prime Time · Perimeter and Area · Fractions · Playing with Constructions · Symmetry · The Other Side of Zero | 12 chapters: The Wonderful World of Science · Diversity in the Living World · Mindful Eating · Exploring Magnets · Measurement of Length and Motion · Materials Around Us · Temperature and its Measurement · A Journey through States of Water · Methods of Separation · Living Creatures · Nature's Treasures · Beyond Earth | High (NCERT contents page) |
+| 7 | Part 1 (8): Large Numbers Around Us · Arithmetic Expressions · A Peek Beyond the Point · Expressions using Letter-Numbers · Parallel and Intersecting Lines · Number Play · A Tale of Three Intersecting Lines · Working with Fractions. Part 2 (7): Geometric Twins · Operations with Integers · Finding Common Ground · Another Peek Beyond the Point · Connecting the Dots… · Constructions and Tilings · Finding the Unknown | 12 chapters (2026-27 reprint; the earlier 13th 'Natural Resources' is not listed): The Ever-Evolving World of Science · Exploring Substances: Acidic, Basic and Neutral · Electricity: Circuits · Metals and Non-metals · Changes around Us · Adolescence · Heat Transfer in Nature · Measurement of Time and Motion · Life Processes in Animals · Life Processes in Plants · Light: Shadows and Reflections · Earth, Moon, and the Sun | High (NCERT contents page) |
+| 8 | Part 1: A Square and a Cube · Power Play · A Story of Numbers · Quadrilaterals · Number Play · We Distribute Yet Things Multiply · Proportional Reasoning-1. Part 2: Fractions in Disguise · The Baudhayana-Pythagoras Theorem · Proportional Reasoning-2 · Exploring Some Geometric Themes · Tales by Dots and Lines · Algebra Play · Area | 13 chapters: Exploring the Investigative World of Science · The Invisible Living World · Health · Electricity: Magnetic and Heating Effects · Exploring Forces · Pressure, Winds, Storms, and Cyclones · Particulate Nature of Matter · Elements, Compounds, and Mixtures · Solutes, Solvents, and Solutions · Light: Mirrors and Lenses · Keeping Time with the Skies · How Nature Works in Harmony · Our Home: Earth | High (NCERT contents page) |
 
 **Textbook rights:** NCERT textbooks are copyrighted. We store **structure only** (chapter titles, topics, learning outcomes, page references) and write our **own** questions and explanations. We do not ingest textbook text at scale unless licensed (master prompt §9). The full NCERT PDFs are free to read at ncert.nic.in/textbook.php; we link to them rather than re-host them.
 
@@ -129,6 +131,6 @@ All rules are stored as versioned **scoring policies** (`board=CBSE, class, subj
 
 ## 7. Open verification items
 1. The official 2026-27 Sample Question Papers (section-wise marks) when CBSE publishes them on cbseacademic.nic.in.
-2. Class 7 Ganita Prakash full chapter list from ncert.nic.in.
+2. ~~Class 7 Ganita Prakash full chapter list~~ ✅ verified 2026-10-08 from the NCERT contents pages (all Class 6–10 books).
 3. The CBSE circular for the two-exam scheme (Phase 2 subject eligibility).
-4. The Class 9 Science chapter-to-unit mapping (re-read the PDF table).
+4. ~~Class 9 Science chapter-to-unit mapping~~ ✅ corrected 2026-10-08. Still open: confirm with a CBSE teacher how Ganita Manjari Ch 9, 10 and 11 map to the CBSE units.

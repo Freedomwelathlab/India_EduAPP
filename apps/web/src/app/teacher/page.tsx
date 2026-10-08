@@ -14,7 +14,7 @@ export default function TeacherHome() {
     cells: TOPICS.map((_, j) => (j === 1 ? masteryOf(s.history) : Math.min(0.97, Math.max(0.12, (s.theory / 80) + ((i * 7 + j * 13) % 20 - 10) / 100)))),
   }));
   const alerts = CLASS_9A.flatMap((s) =>
-    recommend([{ topicId: 'g9m-u2-c1-t1', topicTitle: 'Zeros of a linear polynomial', mastery: masteryOf(s.history), attempts: s.history.length, lastPractisedDaysAgo: 1, prerequisites: [], topMisconception: 'sign error when solving 3x − 6 = 0', hasVideo: true }])
+    recommend([{ topicId: 'g9m-c2-t1', topicTitle: 'Zeros of a linear polynomial', mastery: masteryOf(s.history), attempts: s.history.length, lastPractisedDaysAgo: 1, prerequisites: [], topMisconception: 'sign error when solving 3x − 6 = 0', hasVideo: true }])
       .filter((r) => r.audience === 'teacher').map((r) => ({ ...r, name: s.name })),
   );
   const open = DOUBTS.filter((d) => d.status === 'open');

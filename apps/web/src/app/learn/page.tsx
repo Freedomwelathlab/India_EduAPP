@@ -11,9 +11,9 @@ const ACTION_LABEL = { learn_prerequisite: 'Strengthen first', watch_video: 'Wat
 export default function Today() {
   const me = CLASS_9A.find((s) => s.id === ME.id)!;
   const states: TopicState[] = [
-    { topicId: 'g9m-u2-c1-t1', topicTitle: 'Zeros of a linear polynomial', mastery: masteryOf(me.history), attempts: me.history.length, lastPractisedDaysAgo: 1, prerequisites: [], topMisconception: 'sign errors when moving the constant term across "=".', hasVideo: true },
-    { topicId: 'g9s-u3-c1-t1', topicTitle: 'Uniform acceleration', mastery: 0.25, attempts: 0, lastPractisedDaysAgo: null, prerequisites: [], hasVideo: true },
-    { topicId: 'g9m-u2-c2-t1', topicTitle: 'Arithmetic progressions', mastery: 0.93, attempts: 14, lastPractisedDaysAgo: 18, prerequisites: [], hasVideo: false },
+    { topicId: 'g9m-c2-t1', topicTitle: 'Zeros of a linear polynomial', mastery: masteryOf(me.history), attempts: me.history.length, lastPractisedDaysAgo: 1, prerequisites: [], topMisconception: 'sign errors when moving the constant term across "=".', hasVideo: true },
+    { topicId: 'g9s-c4-t1', topicTitle: 'Uniform acceleration', mastery: 0.25, attempts: 0, lastPractisedDaysAgo: null, prerequisites: [], hasVideo: true },
+    { topicId: 'g9m-c8-t1', topicTitle: 'Arithmetic progressions', mastery: 0.93, attempts: 14, lastPractisedDaysAgo: 18, prerequisites: [], hasVideo: false },
   ];
   const plan = recommend(states).filter((r) => r.audience === 'student').slice(0, 3);
   const nextTest = TESTS.find((t) => t.status === 'upcoming');

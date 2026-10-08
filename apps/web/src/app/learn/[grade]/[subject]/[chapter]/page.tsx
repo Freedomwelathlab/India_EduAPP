@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { SLUG_SUBJECT, allChapters, getSubject, type Grade } from '@ieos/curriculum';
+import { SLUG_SUBJECT, allChapters, chapterLabel, getSubject, type Grade } from '@ieos/curriculum';
 import { questionsForTopic } from '@ieos/assessment';
 import { PageHead } from '@/components/ui';
 import { VIDEOS } from '@/lib/demo';
@@ -16,7 +16,7 @@ export default async function ChapterPage({ params }: { params: Promise<{ grade:
     <>
       <PageHead
         crumbs={[['Subjects', '/learn/subjects'], [`Class ${grade} ${s.name}`, `/learn/${grade}/${p.subject}`], [c.unit.title]]}
-        title={`Chapter ${c.number}: ${c.title}`}
+        title={`${chapterLabel(c)}: ${c.title}`}
         sub={`${c.textbook}${c.periods ? ` · ${c.periods} periods recommended` : ''}`}
       />
       <div className="grid g2">
