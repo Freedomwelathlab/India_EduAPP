@@ -1,0 +1,72 @@
+/* Design system — ported from PSLE-Platform (Bar Model v2).
+   Tokens are the source of truth — components never hardcode a colour.
+   Light is defined on bare :root; dark redefines only the token values, once
+   for the OS preference and once for an explicit choice. */
+:root {
+  --ink: #171634; --ink-2: #3D4463; --ink-3: #626C8C;
+  --ground: #F2F5FD; --surface: #FFFFFF; --surface-2: #F7F9FE;
+  --line: #E1E7F7; --line-2: #CBD5EF;
+
+  --brand: #2B54E0; --brand-deep: #1B37A8; --brand-wash: #E7EDFD;
+  --sky: #27AAE1; --sky-wash: #E4F4FB;
+  --mango: #FF9E2C; --mango-ink: #9A5A00; --mango-wash: #FFF1DE;
+
+  --solid: #0E9F6E; --solid-ink: #07724F; --solid-wash: #E1F5EC;
+  --shaky: #E8930C; --shaky-ink: #8A5A06; --shaky-wash: #FDF2DC;
+  --gap: #DB4A55;   --gap-ink: #B22732;   --gap-wash: #FCE6E8;
+
+  --ma: #6C4BE8; --ma-ink: #5B3BD4; --ma-wash: #EEEAFD;
+  --en: #0E96B8; --en-ink: #0B7E9C; --en-wash: #E2F4F9;
+  --sci: var(--sc); --sci-ink: var(--sc-ink); --sci-wash: var(--sc-wash);
+  --sc: #D6459B; --sc-ink: #B92E80; --sc-wash: #FCE7F3;
+
+  --clay: 0 1px 2px rgba(23,22,52,.06), 0 10px 22px -10px rgba(23,22,52,.20);
+  --clay-lift: 0 2px 4px rgba(23,22,52,.08), 0 22px 44px -18px rgba(23,22,52,.30);
+  --r-xl: 28px; --r-lg: 22px; --r-md: 16px; --r-sm: 10px;
+
+  --display: var(--font-baloo), "Segoe UI Variable Display", system-ui, sans-serif;
+  --body: var(--font-nunito), "Segoe UI", system-ui, sans-serif;
+  --mono: var(--font-mono), ui-monospace, "Cascadia Mono", monospace;
+
+  /* legacy aliases: kept so existing rules below and inline styles in
+     .tsx files (which reference these names directly) keep resolving. */
+  --blue: var(--brand); --blue-deep: var(--brand-deep); --blue-wash: var(--brand-wash);
+  --coral: var(--mango); --coral-wash: var(--mango-wash);
+  --gold: var(--mango); --gold-wash: var(--mango-wash);
+  --shadow-clay: var(--clay); --shadow-lift: var(--clay-lift);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #E6EAFB; --ink-2: #AEB8DA; --ink-3: #8B96BC;
+    --ground: #0D1122; --surface: #161C33; --surface-2: #1D2440;
+    --line: #2A3252; --line-2: #3A4568;
+    --brand: #8AA6FF; --brand-deep: #B4C6FF; --brand-wash: #1C2547;
+    --sky: #5CC6EF; --sky-wash: #12303F;
+    --mango: #FFB55C; --mango-ink: #FFC880; --mango-wash: #3A2A12;
+    --solid: #34D399; --solid-ink: #5FE3B4; --solid-wash: #0D3327;
+    --shaky: #FBBF4E; --shaky-ink: #FBD07B; --shaky-wash: #3A2C10;
+    --gap: #FB7B85;   --gap-ink: #FFA3AA;   --gap-wash: #3B1A1F;
+    --ma: #A98CFF; --ma-ink: #C0AAFF; --ma-wash: #241C4A;
+    --en: #4FC5E4; --en-ink: #7BD8F0; --en-wash: #10303C;
+    --sc: #FF7FC4; --sc-ink: #FFA6D5; --sc-wash: #3B1630;
+    --clay: 0 1px 2px rgba(0,0,0,.5), 0 10px 22px -10px rgba(0,0,0,.7);
+    --clay-lift: 0 2px 4px rgba(0,0,0,.55), 0 22px 44px -18px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"] {
+  --ink: #E6EAFB; --ink-2: #AEB8DA; --ink-3: #8B96BC;
+  --ground: #0D1122; --surface: #161C33; --surface-2: #1D2440;
+  --line: #2A3252; --line-2: #3A4568;
+  --brand: #8AA6FF; --brand-deep: #B4C6FF; --brand-wash: #1C2547;
+  --sky: #5CC6EF; --sky-wash: #12303F;
+  --mango: #FFB55C; --mango-ink: #FFC880; --mango-wash: #3A2A12;
+  --solid: #34D399; --solid-ink: #5FE3B4; --solid-wash: #0D3327;
+  --shaky: #FBBF4E; --shaky-ink: #FBD07B; --shaky-wash: #3A2C10;
+  --gap: #FB7B85;   --gap-ink: #FFA3AA;   --gap-wash: #3B1A1F;
+  --ma: #A98CFF; --ma-ink: #C0AAFF; --ma-wash: #241C4A;
+  --en: #4FC5E4; --en-ink: #7BD8F0; --en-wash: #10303C;
+  --sc: #FF7FC4; --sc-ink: #FFA6D5; --sc-wash: #3B1630;
+  --clay: 0 1px 2px rgba(0,0,0,.5), 0 10px 22px -10px rgba(0,0,0,.7);
+  --clay-lift: 0 2px 4px rgba(0,0,0,.55), 0 22px 44px -18px rgba(0,0,0,.8);
+}
+

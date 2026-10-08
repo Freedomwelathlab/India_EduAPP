@@ -1,0 +1,191 @@
+<title>Vidya Build Status</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single report column. Summary strip → phase ledger → what needs the founder → tasks → daily log. */
+:root {
+  --ground: #F3F4F8; --paper: #FFFFFF; --ink: #1B2440; --ink-2: #4A5373; --ink-3: #7A82A0;
+  --line: #E1E4EE; --accent: #C8611A; --accent-wash: #FBEBDD; --indigo: #2F3F8F; --indigo-wash: #E6E9F7;
+  --ok: #187A4F; --ok-wash: #DDF2E7; --warn: #9A6400; --warn-wash: #FBEFD4; --bad: #B3283A; --bad-wash: #FBE3E6;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --ground: #10142A; --paper: #181E38; --ink: #E7EAF6; --ink-2: #B2B9D6; --ink-3: #8790B3;
+  --line: #2B3358; --accent: #F0954B; --accent-wash: #3A2615; --indigo: #9FB0FF; --indigo-wash: #222B55;
+  --ok: #5ED3A0; --ok-wash: #12372A; --warn: #F2C163; --warn-wash: #3A2D10; --bad: #FF8A98; --bad-wash: #3D1820; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --ground: #10142A; --paper: #181E38; --ink: #E7EAF6; --ink-2: #B2B9D6; --ink-3: #8790B3;
+  --line: #2B3358; --accent: #F0954B; --accent-wash: #3A2615; --indigo: #9FB0FF; --indigo-wash: #222B55;
+  --ok: #5ED3A0; --ok-wash: #12372A; --warn: #F2C163; --warn-wash: #3A2D10; --bad: #FF8A98; --bad-wash: #3D1820; color-scheme: dark; }
+
+body { background: var(--ground); color: var(--ink); font: 15px/1.55 var(--body); padding-inline: 16px; padding-block: 28px 56px; }
+.wrap { max-width: 1040px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; }
+h2 { font-size: 1.25rem; font-weight: 800; }
+p { margin: 0; }
+a { color: var(--indigo); }
+code, .mono { font-family: var(--mono); font-size: 0.86em; }
+.eyebrow { font: 500 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); }
+.head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px; }
+.head p { color: var(--ink-2); max-width: 60ch; margin-top: 6px; }
+.stamp { font: 500 0.8rem var(--mono); color: var(--ink-3); text-align: right; }
+.stamp b { color: var(--ink); display: block; font-size: 1rem; }
+
+.strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 12px; }
+.tile { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.tile .n { font: 800 1.9rem/1 var(--display); font-variant-numeric: tabular-nums; }
+.tile .l { color: var(--ink-3); font-size: 0.84rem; }
+.tile.hl { background: var(--indigo-wash); border-color: transparent; }
+
+section { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.panel { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th { text-align: left; font: 500 0.7rem var(--mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); padding: 12px 14px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+td { padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+.num { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--mono); }
+.meter { display: flex; align-items: center; gap: 8px; min-width: 150px; }
+.meter .track { flex: 1; height: 8px; background: var(--ground); border-radius: 99px; overflow: hidden; border: 1px solid var(--line); }
+.meter .fill { height: 100%; background: var(--indigo); border-radius: 99px; }
+.meter .fill.full { background: var(--accent); }
+.pill { display: inline-block; font: 500 0.72rem var(--mono); padding: 2px 9px; border-radius: 99px; white-space: nowrap; }
+.p-done { background: var(--ok-wash); color: var(--ok); }
+.p-prog { background: var(--indigo-wash); color: var(--indigo); }
+.p-todo { background: var(--ground); color: var(--ink-3); border: 1px solid var(--line); }
+.p-block { background: var(--bad-wash); color: var(--bad); }
+.p-you { background: var(--accent-wash); color: var(--accent); }
+
+.review { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 12px; }
+@media (max-width: 720px) { .review { grid-template-columns: 1fr; } }
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.card.accent { border-color: var(--accent); }
+.url { font: 500 1rem var(--mono); word-break: break-all; }
+.accts { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: 0.88rem; }
+.accts code { color: var(--indigo); }
+.note { color: var(--ink-3); font-size: 0.84rem; }
+.log { display: flex; flex-direction: column; gap: 0; }
+.log .day { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 14px; padding: 14px; border-bottom: 1px solid var(--line); }
+.log .day:last-child { border-bottom: 0; }
+.log .d { font: 500 0.85rem var(--mono); color: var(--accent); }
+.log ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 3px; color: var(--ink-2); }
+@media (max-width: 560px) { .log .day { grid-template-columns: 1fr; gap: 4px; } }
+footer { color: var(--ink-3); font-size: 0.8rem; }
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <div>
+      <div class="eyebrow">India Education OS · CBSE Classes 6–10 · Maths &amp; Science</div>
+      <h1>Vidya build status</h1>
+      <p>A school-paid learning and assessment platform: daily practice, CBSE periodic tests with best-2-of-3 calculated automatically, tutor videos and doubt sessions. This page is updated at the end of every working session.</p>
+    </div>
+    <div class="stamp">Last updated<b>8 Oct 2026</b>Session 3</div>
+  </header>
+
+  <div class="strip">
+    <div class="tile hl"><span class="n">Gate 1–4</span><span class="l">Research, strategy, architecture and build running in parallel</span></div>
+    <div class="tile"><span class="n">22</span><span class="l">app screens live on the review link</span></div>
+    <div class="tile"><span class="n">35 / 35</span><span class="l">engine tests passing</span></div>
+    <div class="tile"><span class="n">10</span><span class="l">sample questions (1 per class × subject), all draft</span></div>
+    <div class="tile"><span class="n">217</span><span class="l">days to the DPDP children's-data deadline (13 May 2027)</span></div>
+  </div>
+
+  <section>
+    <h2>Review the app</h2>
+    <div class="review">
+      <div class="card accent">
+        <div class="eyebrow">Review link</div>
+        <div class="url"><a href="https://vidya-review.vercel.app/login" target="_blank" rel="noreferrer">vidya-review.vercel.app</a></div>
+        <p class="note">Sign in with one of the demo accounts. The password was given to the founder in chat and is not written on this page. Every account belongs to a fictional school; there is no real student data.</p>
+      </div>
+      <div class="card">
+        <div class="eyebrow">Demo accounts</div>
+        <div class="accts">
+          <code>reviewer</code><span>All five views (start here)</span>
+          <code>student</code><span>Aanya Sharma, Class 9A</span>
+          <code>teacher</code><span>Mrs. Lakshmi Rao, Maths</span>
+          <code>parent</code><span>Rohit Sharma</span>
+          <code>principal</code><span>School leadership + teacher views</span>
+          <code>admin</code><span>Platform super admin</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Where each area stands</h2>
+    <div class="panel"><table>
+      <thead><tr><th>Area</th><th>Foundation</th><th>Full V1 scope</th><th>Status</th><th>Next step</th></tr></thead>
+      <tbody>
+        <tr><td><b>Research &amp; evidence</b></td><td><div class="meter"><div class="track"><div class="fill" style="width:45%"></div></div><span class="num">45%</span></div></td><td class="num">25%</td><td><span class="pill p-prog">In progress</span></td><td>Competitor matrix; Class 6–8 chapter check against NCERT</td></tr>
+        <tr><td><b>Strategy &amp; plan</b></td><td><div class="meter"><div class="track"><div class="fill" style="width:40%"></div></div><span class="num">40%</span></div></td><td class="num">20%</td><td><span class="pill p-prog">In progress</span></td><td>Pricing waits on school interviews</td></tr>
+        <tr><td><b>Architecture</b></td><td><div class="meter"><div class="track"><div class="fill" style="width:50%"></div></div><span class="num">50%</span></div></td><td class="num">30%</td><td><span class="pill p-prog">In progress</span></td><td>Connect the Postgres database (Nov)</td></tr>
+        <tr><td><b>App build</b></td><td><div class="meter"><div class="track"><div class="fill" style="width:40%"></div></div><span class="num">40%</span></div></td><td class="num">12%</td><td><span class="pill p-prog">In progress</span></td><td>Map all Class 9–10 topics; real accounts</td></tr>
+        <tr><td><b>Content</b></td><td><div class="meter"><div class="track"><div class="fill" style="width:5%"></div></div><span class="num">5%</span></div></td><td class="num">1%</td><td><span class="pill p-block">Needs reviewers</span></td><td>~6,000 questions and ~200 videos to produce and review</td></tr>
+        <tr><td><b>Compliance</b></td><td><div class="meter"><div class="track"><div class="fill" style="width:10%"></div></div><span class="num">10%</span></div></td><td class="num">5%</td><td><span class="pill p-block">Needs lawyer</span></td><td>Data-processor role and privacy notice under DPDP</td></tr>
+        <tr><td><b>Go-to-market</b></td><td><div class="meter"><div class="track"><div class="fill" style="width:0%"></div></div><span class="num">0%</span></div></td><td class="num">0%</td><td><span class="pill p-you">Founder</span></td><td>20 CBSE school conversations</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">Foundation = the pieces everything else is built on. Full V1 scope = everything needed for paid pilots in Feb 2027.</p>
+  </section>
+
+  <section>
+    <h2>Needs the founder</h2>
+    <div class="panel"><table>
+      <thead><tr><th>#</th><th>Action</th><th>Why it matters</th><th>By</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">F2</td><td><b>Engage a data-protection / ed-tech lawyer</b></td><td>Children's-data rules start 13 May 2027</td><td class="mono">Nov 2026</td><td><span class="pill p-you">Open</span></td></tr>
+        <tr><td class="mono">F3</td><td><b>Line up 20 CBSE school conversations</b></td><td>Validates demand, buyer and price; 3 pilot letters is the first milestone</td><td class="mono">Nov 2026</td><td><span class="pill p-you">Open</span></td></tr>
+        <tr><td class="mono">F4</td><td><b>Recruit 2 subject-expert reviewers</b> (Maths, Science)</td><td>No content can reach students without a named reviewer</td><td class="mono">Nov 2026</td><td><span class="pill p-you">Open</span></td></tr>
+        <tr><td class="mono">F1</td><td><b>Incorporate the Indian Pvt Ltd</b> + DPIIT recognition</td><td>Contracts, invoicing, GST</td><td class="mono">Nov 2026</td><td><span class="pill p-you">Open</span></td></tr>
+        <tr><td class="mono">F5</td><td><b>Trademark search for "Vidya"</b> + domain</td><td>"Vidya" is widely used in Indian education; a distinctive mark may be needed</td><td class="mono">Nov 2026</td><td><span class="pill p-you">Open</span></td></tr>
+        <tr><td class="mono">F7</td><td><b>Create the GitHub repo and push</b> from your own terminal</td><td>Version control and automatic deploys</td><td class="mono">This week</td><td><span class="pill p-you">Open</span></td></tr>
+        <tr><td class="mono">F6</td><td>Choose the video hosting provider</td><td>Cost per minute watched</td><td class="mono">Dec 2026</td><td><span class="pill p-todo">Later</span></td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>Claude's task list</h2>
+    <div class="panel"><table>
+      <thead><tr><th>#</th><th>Task</th><th>Target</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">C1</td><td>Verify the Class 6–8 chapter lists against ncert.nic.in (Class 7 Maths incomplete)</td><td class="mono">12 Oct</td><td><span class="pill p-todo">Next</span></td></tr>
+        <tr><td class="mono">C2</td><td>Re-check the Class 9 Science chapter-to-unit mapping</td><td class="mono">12 Oct</td><td><span class="pill p-todo">Next</span></td></tr>
+        <tr><td class="mono">C6</td><td>School interview script + pilot one-pager</td><td class="mono">15 Oct</td><td><span class="pill p-todo">Next</span></td></tr>
+        <tr><td class="mono">C3</td><td>Map topics and learning outcomes for every Class 9–10 chapter</td><td class="mono">20 Oct</td><td><span class="pill p-todo">Queued</span></td></tr>
+        <tr><td class="mono">C4</td><td>Competitor matrix</td><td class="mono">20 Oct</td><td><span class="pill p-todo">Queued</span></td></tr>
+        <tr><td class="mono">C5</td><td>Compliance matrix v1</td><td class="mono">25 Oct</td><td><span class="pill p-todo">Queued</span></td></tr>
+        <tr><td class="mono">C7</td><td>Connect Postgres, real school-issued accounts</td><td class="mono">Nov</td><td><span class="pill p-todo">Queued</span></td></tr>
+        <tr><td class="mono">C8</td><td>Question generation + quality-check pipeline (ported from PSLE)</td><td class="mono">Nov</td><td><span class="pill p-todo">Queued</span></td></tr>
+        <tr><td class="mono">C9</td><td>Topic-video template (Remotion, one voice)</td><td class="mono">Dec</td><td><span class="pill p-todo">Queued</span></td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>Session log</h2>
+    <div class="panel log">
+      <div class="day"><span class="d">8 Oct · S3</span><ul>
+        <li>Brand renamed to <b>Vidya</b> (working name); the demo school renamed to Sahyadri Public School to avoid a clash.</li>
+        <li>Added demo sign-in with six fictional accounts and role-based access (a teacher cannot open admin or student areas).</li>
+        <li>Deployed the review build to vidya-review.vercel.app, with a fresh password and session secret set on the server.</li>
+        <li>Created this status page.</li>
+      </ul></div>
+      <div class="day"><span class="d">8 Oct · S2</span><ul>
+        <li>Read the 7 official CBSE 2026-27 curriculum PDFs: syllabus, unit marks, internal assessment, grading and pass rules, Standard/Advanced levels.</li>
+        <li>Designed the tutor video + doubt + live session module; wrote the master roadmap.</li>
+        <li>Built the monorepo and the 22-screen app with 10 working sample questions; 35 tests pass.</li>
+      </ul></div>
+      <div class="day"><span class="d">7 Oct · S1</span><ul>
+        <li>Read the master brief; checked current regulation (DPDP Rules timeline, Supreme Court APAAR order) and CBSE 2026-27 changes.</li>
+        <li>Wrote the program plan and source register.</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <footer>Vidya is a working name pending a trademark search. Not affiliated with CBSE, NCERT or the Ministry of Education. Source documents live in the India-Education-OS repository under docs/.</footer>
+</div>

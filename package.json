@@ -1,0 +1,17 @@
+{
+  "name": "india-education-os",
+  "private": true,
+  "packageManager": "pnpm@11.22.0",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "pnpm --filter @ieos/web dev",
+    "build": "pnpm --filter @ieos/web build",
+    "typecheck": "pnpm -r typecheck",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "typescript": "5.7.2",
+    "vitest": "2.1.8",
+    "@types/node": "22.10.2"
+  }
+}
