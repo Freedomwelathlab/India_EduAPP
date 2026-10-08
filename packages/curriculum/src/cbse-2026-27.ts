@@ -14,6 +14,9 @@ import type {
   Chapter, Confidence, CurriculumVersion, Grade, SourceRef, SubjectCode, SubjectCurriculum, Topic, Unit,
 } from './types';
 import { G10_TOPICS } from './topics-g10';
+import { G9_TOPICS } from './topics-g9';
+
+const MAPPED_TOPICS: Record<string, Topic[]> = { ...G9_TOPICS, ...G10_TOPICS };
 
 const ACCESSED = '2026-10-08';
 const CBSE_BASE = 'https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/';
@@ -49,7 +52,7 @@ const chapterId = (prefix: string, n: number, part?: 1 | 2) => `${prefix}-${part
 function ch(prefix: string, textbook: string, [n, title, names, part]: Row, topics: Topic[] = [], periods?: number, confidence: Confidence = 'high'): Chapter {
   const id = chapterId(prefix, n, part);
   // Seed topics first, then the board-mapped topics for that chapter (C3).
-  const c: Chapter = { id, number: n, title, textbook, topics: [...topics, ...(G10_TOPICS[id] ?? [])], confidence };
+  const c: Chapter = { id, number: n, title, textbook, topics: [...topics, ...(MAPPED_TOPICS[id] ?? [])], confidence };
   if (part) c.part = part;
   if (names) c.boardSyllabusNames = names;
   if (periods !== undefined) c.periods = periods;

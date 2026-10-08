@@ -68,17 +68,18 @@ describe('NCERT book alignment (contents pages, 2026-27 reprints)', () => {
   });
 });
 
-describe('Class 10 topic map (C3)', () => {
-  it('every Class 10 chapter has at least one topic, and every mapped key is a real chapter', async () => {
+describe('Class 9–10 topic map (C3)', () => {
+  it('every Class 9–10 chapter has at least one topic, and every mapped key is a real chapter', async () => {
     const { G10_TOPICS } = await import('./topics-g10');
+    const { G9_TOPICS } = await import('./topics-g9');
     const ids = new Set<string>();
-    for (const g of [10] as const) for (const subj of ['MATH', 'SCI'] as const) {
+    for (const g of [9, 10] as const) for (const subj of ['MATH', 'SCI'] as const) {
       for (const u of getSubject(g, subj)!.units) for (const c of u.chapters) {
         ids.add(c.id);
         expect(c.topics.length, c.id).toBeGreaterThan(0);
       }
     }
-    for (const k of Object.keys(G10_TOPICS)) expect(ids.has(k), k).toBe(true);
+    for (const k of [...Object.keys(G9_TOPICS), ...Object.keys(G10_TOPICS)]) expect(ids.has(k), k).toBe(true);
   });
 
   it('board formative-only content is flagged so it never enters a Board mock', () => {

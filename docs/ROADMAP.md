@@ -47,6 +47,29 @@ Labels: **[F]** fact · **[A]** assumption · **[R]** recommendation · **[H]** 
 | **Aug 2027** | Security hardening, pen-test, backups/DR drill | — | ISO 27001 readiness assessment |
 | **Sep 2027** | PMF review; decide second board / Classes 11–12 | — | Seed-round readiness pack |
 
+## 3a. Accelerated timeline (founder decision, 2026-10-08): remaining durations halved
+
+The month-by-month table above is **superseded** by this one. Every remaining duration, measured from 8 Oct 2026, is cut by 50%.
+
+| Milestone | Was | Now | Holds only if |
+|---|---|---|---|
+| Compliance matrix v1 (C5) | 25 Oct | **12 Oct** | — |
+| Lawyer engaged; DPA + privacy notice drafted (F2) | Nov | **24 Oct** | Founder engages counsel this week |
+| 2 subject reviewers recruited (F4) | Nov | **24 Oct** | — |
+| Postgres + real school accounts live (C7) | end Nov | **24 Oct** | — |
+| 20 school conversations; 3 pilot letters (F3, P0 exit) | Nov | **31 Oct** | ~7 conversations a week |
+| Company incorporated (F1) | Nov | **31 Oct** | — |
+| Question pipeline producing reviewed Class 9 items (C8) | end Nov | **31 Oct** | Reviewers in place (F4) |
+| Topic videos for pilot chapters (C9) | Dec | **14 Nov** | — |
+| Unit economics (C11) | Dec | **14 Nov** | Interview price data in by 31 Oct |
+| Foundation build complete (P1 exit) | end Jan 2027 | **mid-Dec 2026** | Content review keeps pace |
+| **Paid pilots start** (P2) | Feb 2027 | **5 Jan 2027** (Classes 6–9) | Schools agree in Nov; Class 10 excluded (pre-boards and Board exams) |
+| Pilot post-test + conversions | Apr–Jun 2027 | **Mar 2027** | 12-week pilot from 5 Jan |
+| DPDP children's-data compliance | 13 May 2027 | **13 May 2027 (fixed by law)**; our target is **31 Mar 2027** | Lawyer sign-off |
+| PMF review | Sep 2027 | **Apr–May 2027** | Pilot evidence in |
+
+**What halving cannot speed up:** CBSE's calendar (half-yearly Sept, pre-boards Dec, Board exams Feb–Mar), schools' buying window (Jan–Mar for April), and the legal DPDP date. The bottlenecks are founder-side (interviews, lawyer, reviewers), not build-side. If F2–F4 slip, the pilot date slips with them.
+
 ## 4. Seven-year scenario outline (to be modelled in Deliverable I; all [H])
 
 | Stage | Years | Schools (cons / base / aggr) | Note |

@@ -42,6 +42,9 @@ In each school, try to meet the **academic coordinator** first, then a **Maths o
 7. If you could fix one thing about assessment in your school tomorrow, what would it be?
 8. What tools do you pay for today (content, ERP, LMS, test platforms)? Roughly what do they cost per student or per year? What do teachers actually use, and what sits unused?
 
+8a. Have you evaluated **LEAD, Extramarks, Next Education or Toddle**? What made you choose or reject them, and roughly what were you quoted?
+8b. Do you already have **interactive panels or an ERP**? Which ones? (Vidya should work alongside them.)
+
 **C. Decision and money (6 min)**
 9. If a tool like this were adopted, who would **suggest** it, who would **approve** it, and who would **sign** the payment?
 10. When in the year are such decisions made? (Expect Jan–Mar for an April start; verify.)
